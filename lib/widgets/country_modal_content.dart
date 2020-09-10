@@ -1,4 +1,3 @@
-import 'package:challenge2ibi/widgets/constants.dart';
 import 'package:challenge2ibi/widgets/modal_tiles.dart';
 import 'package:challenge2ibi/widgets/progress.dart';
 import 'package:flutter/cupertino.dart';
@@ -45,7 +44,7 @@ class ModalFit extends StatelessWidget {
               width: Get.height*0.55,
               height: Get.height*0.55,
               child: SvgPicture.network(
-                cover,
+                cover.toString(),
                 fit: BoxFit.cover,
                 placeholderBuilder: (context) => circularProgress(context),
                 height: 8.0,
@@ -70,32 +69,6 @@ class ModalFit extends StatelessWidget {
                 modalTile(title: "Área", value: countryArea),
                 modalTile(title: "Fuso Horário", value: countryTimeZone),
                 modalTile(title: "Nome nativo", value: countryNativeName),
-                Padding(
-                  padding:EdgeInsets.only(
-                    left: 12,
-                    right: 12,
-                    top: 2,
-                    bottom: 2
-
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      MaterialButton(
-                        onPressed: (){},
-                        child: Text("XLS"),
-                      ),
-                      MaterialButton(
-                        onPressed: (){},
-                        child: Text("CSV"),
-                      ),
-                      MaterialButton(
-                        onPressed: (){},
-                        child: Text("XML"),
-                      ),
-                    ],
-                  ),
-                ),
               ],
             ),
           ),

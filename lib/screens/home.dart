@@ -1,5 +1,5 @@
+import 'package:challenge2ibi/controllers/home_controller.dart';
 import 'package:challenge2ibi/models/country_model.dart';
-import 'package:challenge2ibi/services/countries_service.dart';
 import 'package:challenge2ibi/widgets/constants.dart';
 import 'package:challenge2ibi/widgets/country_modal.dart';
 import 'package:challenge2ibi/widgets/country_modal_content.dart';
@@ -8,6 +8,8 @@ import 'package:challenge2ibi/widgets/header_widget.dart';
 import 'package:challenge2ibi/widgets/progress.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+//import 'package:get/get.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -17,15 +19,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   
-  Future<List<CountryModel>> countryFuture;
-  CountriesService _service;
-
-  @override
-  void initState() {
-    _service = CountriesService();
-    countryFuture = _service.getAllCountries();
-    super.initState();
-  }
+  final HomeController _homeController = Get.put(HomeController());
 
   @override
   Widget build(BuildContext context) {
@@ -56,8 +50,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           IconButton(
                             icon: Icon(
-                              Icons.chevron_right,
+                              Icons.arrow_drop_down,
                               color: appColor,
+                              size: 38,
                             ), 
                             onPressed: null
                           )
@@ -80,15 +75,68 @@ class _HomeScreenState extends State<HomeScreen> {
             delegate: SliverChildBuilderDelegate(
               (BuildContext context,int index){
                 return FutureBuilder(
-                  future: countryFuture,
+                  future: _homeController.countryFuture,
 
                   builder: (context, AsyncSnapshot<List<CountryModel>> snapshot){
                     var c = snapshot.data[index];
+                    if (snapshot.connectionState == ConnectionState.done){
+                      if(snapshot.hasData){
+                        return GestureDetector(
+                          onTap: (){
+                            print("Tapped");
+                            return showFloatingModalBottomSheet(
+                              context: context, 
+                              builder: (context, scrollController) => ModalFit(
+                                scrollController: scrollController, 
+                                cover: c.flag.toString(),
+                                countryName: c.name.toString(),
+                                countryCapital: c.capital.toString(),
+                                countryRegion: c.region.toString(),
+                                countrySubRegion: c.subregion.toString(),
+                                countryArea: c.area.toString(),
+                                countryPopulation: c.population.toString(),
+                                countryNativeName: c.nativeName.toString(),
+                                countryTimeZone: c.timezones.toString(),                                             
+                              ),
+                            );
+                          },
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                              left: 4,
+                              right: 4
+                            ),
+                            child: countryWidget(
+                              context, 
+                              countryName: c.name ?? "Country",
+                              countryRegion: c.region,
+                              cover: c.flag.toString(),
+                              //isCover: c.flag.toString().endsWith("null")
+                            ),
+                          ),
+                        );
+                      }else if(snapshot.hasError){
+                        return Center(
+                          child: Text('Error: ${snapshot.error}',
+                            style: TextStyle(color: Colors.grey),
+                          ),
+                        );
+                      }else{
+                        return circularProgress(context);
+                      }
+                    }
+                    return Center(
+                      child: circularProgress(context),
+                    );
+                    
+
+                    //
+                    /*
                     if(snapshot.hasError){
                       return Center(
                         child: Text('Error: ${snapshot.error}',
-                        style: TextStyle(color: Colors.grey)
-                        ,),);
+                          style: TextStyle(color: Colors.grey),
+                        ),
+                      );
                     }
                     if(snapshot.hasData){
                       return GestureDetector(
@@ -119,17 +167,21 @@ class _HomeScreenState extends State<HomeScreen> {
                             context, 
                             countryName: c.name ?? "Country",
                             countryRegion: c.region,
-                            cover: c.flag
+                            cover: c.flag.toString(),
+                            //isCover: c.flag.toString().endsWith("null")
                           ),
                         ),
                       );
-                    }else{
+                    }
+                    else{
                       return circularProgress(context);
                     }
+                    */
                   },
+                
                 ); 
               },
-              childCount: 20,
+              childCount: 30,
             ),
           ),
           
@@ -138,4 +190,5 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+  
 }

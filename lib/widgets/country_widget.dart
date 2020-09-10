@@ -1,13 +1,16 @@
+import 'dart:io';
+
 import 'package:challenge2ibi/widgets/constants.dart';
 import 'package:challenge2ibi/widgets/progress.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'dart:math' as math;
 
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 Column countryWidget(context,
-  {String countryName, String countryRegion, String cover, }
+  {String countryName, String countryRegion, String cover, /*bool isCover*/}
 ){
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
@@ -17,11 +20,16 @@ Column countryWidget(context,
           width: Get.height*0.55,
           height: Get.height*0.55,
           child: SvgPicture.network(
-            cover,
+            "$cover",
+            headers: {HttpHeaders.contentTypeHeader: "application/json"},
+            semanticsLabel: "Flag",
             fit: BoxFit.cover,
             placeholderBuilder: (context) => circularProgress(context),
-            height: 8.0,
+            height: 8,
           ),
+          /*
+          : Image.asset(localCover, fit: BoxFit.cover,),
+          */
           decoration: BoxDecoration(          
             //color: Colors.white70,
             color: Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0),

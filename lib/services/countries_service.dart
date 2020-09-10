@@ -4,8 +4,7 @@ import 'package:challenge2ibi/services/utils/custom_dio.dart';
 
 
 class CountriesService{
-  
-  
+   
   Future<List<CountryModel>> getAllCountries() async{
 
     var dio = CustomDio.withoutAuthentication().instance;
@@ -19,7 +18,7 @@ class CountriesService{
       print(err);
       return err;
     });
-
+    
   }
 
 }

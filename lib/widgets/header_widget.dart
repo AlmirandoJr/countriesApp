@@ -1,3 +1,4 @@
+import 'package:challenge2ibi/controllers/export_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -6,7 +7,7 @@ var localCover ="assets/img/un.jpg";
 
 SliverAppBar header(context, {String title}){
   return SliverAppBar(
-    expandedHeight: Get.height*0.35,
+    expandedHeight: Get.height*0.38,
     pinned: true,
     floating: false,
     centerTitle: false,
@@ -18,12 +19,34 @@ SliverAppBar header(context, {String title}){
       ),
     ),
     backgroundColor: bodyColor,
-    elevation: 0,
+    elevation: 2,
     actions: <Widget>[
+      /*
       IconButton(
-        icon: Icon(Icons.search, color: Colors.white),
+        icon: Icon(Icons.more_vert, color: Colors.white),
         onPressed: null
       ),  
+      */
+      PopupMenuButton<String>(
+        onSelected: handleClick,
+        color: bodyColor,
+        itemBuilder: (BuildContext context) { 
+          return {'Exportar XLS', 'Exportar CSV', 'Exportar XML'}.map((String choice) {
+            return PopupMenuItem<String>(
+              value: choice,                      
+              child: Text(
+                choice,
+                style: TextStyle(
+                  fontFamily: 'Lato',
+                  fontSize: 15,
+                  //color: Colors.white
+                ),
+              ),
+            );
+          }).toList();
+        },
+      ),
+           
     ],
 
     flexibleSpace: Stack(
@@ -99,4 +122,20 @@ SliverAppBar header(context, {String title}){
         ],
       ),
   );
+  
+}
+void handleClick(String value) {
+  switch (value) {
+    case 'Exportar XLS':
+      print("XLS");
+      //exportToXls();
+      break;
+    case 'Exportar CSV':
+      print("CSV");
+      exportToCsv();
+      break;
+    case 'Exportar XML' :
+      print("XML");        
+      break;
+  }
 }

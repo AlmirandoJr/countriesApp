@@ -128,14 +128,15 @@ void handleClick(String value) {
   switch (value) {
     case 'Exportar XLS':
       print("XLS");
-      //exportToXls();
+      exportToXls();
       break;
     case 'Exportar CSV':
       print("CSV");
       exportToCsv();
       break;
     case 'Exportar XML' :
-      print("XML");        
+      print("XML");    
+      exportToXml();    
       break;
   }
 }

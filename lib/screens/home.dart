@@ -22,6 +22,12 @@ class _HomeScreenState extends State<HomeScreen> {
   final HomeController _homeController = Get.put(HomeController());
 
   @override
+  void initState() {
+    super.initState();
+    //Permission
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: bodyColor,
@@ -75,6 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
             delegate: SliverChildBuilderDelegate(
               (BuildContext context,int index){
                 return FutureBuilder(
+                  
                   future: _homeController.countryFuture,
 
                   builder: (context, AsyncSnapshot<List<CountryModel>> snapshot){
@@ -183,9 +190,7 @@ class _HomeScreenState extends State<HomeScreen> {
               },
               childCount: 30,
             ),
-          ),
-          
-          
+          ),        
         ],
       ),
     );

@@ -1,11 +1,8 @@
 import 'dart:io';
-
 import 'package:challenge2ibi/controllers/home_controller.dart';
 import 'package:challenge2ibi/models/country_model.dart';
 import 'package:challenge2ibi/services/permission_service.dart';
 import 'package:csv/csv.dart';
-//import 'package:excel/excel.dart';
-
 import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:xml/xml.dart';
@@ -15,37 +12,6 @@ final HomeController _homeController = Get.put(HomeController());
 
 //Device writing permission service initialization
 final PermissionService _permissionController = Get.put(PermissionService());
-
-
-Future<void> exportToXls() async{
- 
-  //List of contries creation based on the controller
-  List<CountryModel> listData = await _homeController.countryFuture;
-
-  //Xls list creation based the listData index
-  List<List<String>> xlsData = [
-    <String>[
-      'Nome do Pais',
-      'Capital',
-      'Região',
-      'Habitantes',
-      'Fuso-horário'
-    ],
-    ...listData.map((e) => [
-      e.name,
-      e.capital,
-      e.region,
-      e.population.toString(),
-      e.timezones.toString()
-    ])
-  ];
-  /*
-  var excel = Excel.createExcel();
-  excel.insertRow("Countries", 1);
-  print(excel);
-  */
-
-}
 
 Future <void> exportToCsv() async{
   
@@ -85,20 +51,22 @@ Future <void> exportToCsv() async{
 
   final String path = '$dir/countries_list.csv';
   
-
   final File file = File(path);
   
   //Save the CSV file on the Device app folder
   await file.writeAsString(csv);
   print("exported");
-
 }
 
 Future<void> exportToXml() async{
+
+  //List of contries creation based on the controller
   List<CountryModel> listData = await _homeController.countryFuture;
-  
+
+  //XML builder
   final builder = XmlBuilder();
 
+  //Array of countries
   var countries = listData.map((e) => [
     e.name,
     e.capital,
@@ -107,7 +75,9 @@ Future<void> exportToXml() async{
     e.timezones.toString()
   ]);
 
+  //XML Header
   builder.processing('xml', 'version="1.0"');
+
   builder.element('Paises', nest: () {
     countries.forEach((element) {  
     
@@ -132,9 +102,9 @@ Future<void> exportToXml() async{
   });
   
   final countriesXml = builder.build();
-  print(countriesXml.toString());
+  //print(countriesXml.toString());
 
-  //requestWrite
+  //requestWritePermission
   _permissionController.requestWriteExternalStoragePermission();
 
   final String dir = (await getExternalStorageDirectory()).path;
@@ -142,12 +112,15 @@ Future<void> exportToXml() async{
   print("$dir");
 
   final String path = '$dir/countries_list.xml';
-  
 
   final File file = File(path);
   
-  //Save the CSV file on the Device app folder
+  //Save the XML file on the Device app folder
   await file.writeAsString(countriesXml.toString());
   print("exported");
 
+}
+
+Future<void> exportToXls() async{
+  print("XLS TODO");
 }

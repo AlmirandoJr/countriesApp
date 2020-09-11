@@ -31,12 +31,13 @@ dependencies:
   get: ^3.8.0
   dio: ^3.0.10
   flutter_svg: ^0.17.4
-  modal_bottom_sheet: ^0.2.0+1
-  csv: ^4.0.3
+  modal_bottom_sheet: ^0.2.0+1  
   path_provider: ^1.6.14
   permission_handler: ^3.3.0
+  csv: ^4.0.3
   xml: ^3.6.1
-  #xcel: any
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

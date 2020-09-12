@@ -1,6 +1,6 @@
-﻿# Countries App for 2iBi Challenge
+﻿# CountriesApp para 2iBi Challenge
 
-<p> Este aplicativo faz a busca, visualização e exportação de informações sobre paises, com base na API <a href="https://restcountries.eu/"> REST COUNTRIES</a>.
+<p>Aplicativo mobile para sistema Android. Efectua uma busca, visualização e exportação de informações sobre paises, com base na API <a href="https://restcountries.eu/"> REST COUNTRIES</a>.
 </p>
 
 ## Apresentação
@@ -12,7 +12,6 @@
 
 
 
-HEAD
 - SCREENSHOTS
 
 | Imagem 1  |  Imagem 2  |
@@ -53,5 +52,3 @@ HEAD
 
 ```flutter pub get```  
 ```flutter run --profile```
-
-ad6cf13d48edfeb72b22a33096b2ad1626bd57d5

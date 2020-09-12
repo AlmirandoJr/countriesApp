@@ -39,10 +39,7 @@
 
 ## Inicialização do projecto
 
-1. Instalar o flutter 
-
-```git clone https://github.com/AlmirandoJr/countriesApp.git```
-
+1. <a href="https://flutter.dev/docs/get-started/install">Instalar o flutter </a>
 
 2. Clonar o repósitorio
 

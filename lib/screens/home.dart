@@ -20,6 +20,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   
   final HomeController _homeController = Get.put(HomeController());
+  var listCount = 10;
 
   @override
   void initState() {
@@ -31,6 +32,15 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: bodyColor,
+      floatingActionButton: FloatingActionButton(
+      onPressed: () {
+        setState(() {
+          listCount = listCount+8;
+        });
+      },
+      child: Icon(Icons.add),
+      backgroundColor: appColor,
+    ),
       body: CustomScrollView(
         slivers: <Widget>[
           header(context, title: "2iBi Software"),
@@ -134,61 +144,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     return Center(
                       child: circularProgress(context),
                     );
-                    
-
-                    //
-                    /*
-                    if(snapshot.hasError){
-                      return Center(
-                        child: Text('Error: ${snapshot.error}',
-                          style: TextStyle(color: Colors.grey),
-                        ),
-                      );
-                    }
-                    if(snapshot.hasData){
-                      return GestureDetector(
-                        onTap: (){
-                          print("Tapped");
-                          return showFloatingModalBottomSheet(
-                            context: context, 
-                            builder: (context, scrollController) => ModalFit(
-                              scrollController: scrollController, 
-                              cover: c.flag.toString(),
-                              countryName: c.name.toString(),
-                              countryCapital: c.capital.toString(),
-                              countryRegion: c.region.toString(),
-                              countrySubRegion: c.subregion.toString(),
-                              countryArea: c.area.toString(),
-                              countryPopulation: c.population.toString(),
-                              countryNativeName: c.nativeName.toString(),
-                              countryTimeZone: c.timezones.toString(),                                             
-                            ),
-                          );
-                        },
-                        child: Padding(
-                          padding: EdgeInsets.only(
-                            left: 4,
-                            right: 4
-                          ),
-                          child: countryWidget(
-                            context, 
-                            countryName: c.name ?? "Country",
-                            countryRegion: c.region,
-                            cover: c.flag.toString(),
-                            //isCover: c.flag.toString().endsWith("null")
-                          ),
-                        ),
-                      );
-                    }
-                    else{
-                      return circularProgress(context);
-                    }
-                    */
-                  },
-                
+                  },               
                 ); 
               },
-              childCount: 30,
+              childCount: listCount,
             ),
           ),        
         ],

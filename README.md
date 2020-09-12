@@ -1,16 +1,54 @@
-# challenge2ibi
+# Countries App for 2iBi Challenge
 
-A new Flutter project.
+<p> Este aplicativo faz a busca, visualização e exportação de informações sobre paises, com base na API <a href="https://restcountries.eu/"> REST COUNTRIES</a>.
+</p>
 
-## Getting Started
+## Apresentação
+- Gif
 
-This project is a starting point for a Flutter application.
+| GIF		|
+| ------------- |
+| <img src="./assets/screenshots/appgif.gif" alt="App GIF presentation">	|
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- SCREENSHOTS
+
+| Imagem 1  |  Imagem 2  |
+| ------------------- | ------------------- |
+| <img src="./assets/screenshots/1.jpg" alt="App IMG 1"> |  <img src="./assets/screenshots/2.jpg" alt="App IMG 1"> |
+
+
+| Imagem 3  |  Imagem 4  | Imagem 5 |
+| ------------------- | ------------------- | ------------------- |
+|  <img src="./assets/screenshots/3.jpg" alt="App IMG 3"> |  <img src="./assets/screenshots/4.jpg" alt="App IMG 4"> |   <img src="./assets/screenshots/5.jpg" alt="App IMG 5">		  |
+
+## Download Link
+
+<a href="https://drive.google.com/file/d/19YWT_uesYgWJ72lSErkbxPlLeINuQMm1/view?usp=sharing"> Baixar Aplicativo (APK) para telemóveis com sistema Android</a>
+
+## Funcionalidades
+
+- [x] Busca de todos os paises na API
+- [x] Visualização de informações por pais
+- [x] Exportação de informações dos paises para ficheiro CSV
+- [x] Exportação de informações dos paises para ficheiro XML
+- [x] Armazenamento dos ficheiros na pasta do aplicativo no dispositivo
+- [ ] Exportação de informações dos paises para ficheiro XLS
+
+
+## Inicialização do projecto
+
+1. Instalar o flutter 
+
+```git clone https://github.com/AlmirandoJr/countriesApp.git```
+
+
+2. Clonar o repósitorio
+
+```git clone https://github.com/AlmirandoJr/countriesApp.git```
+
+3. Executar
+
+```flutter pub get```  
+```flutter run --profile```

@@ -7,18 +7,13 @@ import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:xml/xml.dart';
 
-//Data fetching controller initialization
 final HomeController _homeController = Get.put(HomeController());
-
-//Device writing permission service initialization
 final PermissionService _permissionController = Get.put(PermissionService());
 
 Future <void> exportToCsv() async{
-  
-  //List of contries creation based on the controller
+
   List<CountryModel> listData = await _homeController.countryFuture;
 
-  //Csv list creation based the listData index
   List<List<String>> csvData = [
     <String>[
       'Nome do Pais',
@@ -41,8 +36,7 @@ Future <void> exportToCsv() async{
   if(csvData != null){
     csv = const ListToCsvConverter().convert(csvData);
   }
-  
-  //requestWrite
+
   _permissionController.requestWriteExternalStoragePermission();
 
   final String dir = (await getExternalStorageDirectory()).path;
@@ -53,20 +47,16 @@ Future <void> exportToCsv() async{
   
   final File file = File(path);
   
-  //Save the CSV file on the Device app folder
   await file.writeAsString(csv);
   print("exported");
 }
 
 Future<void> exportToXml() async{
 
-  //List of contries creation based on the controller
   List<CountryModel> listData = await _homeController.countryFuture;
 
-  //XML builder
   final builder = XmlBuilder();
 
-  //Array of countries
   var countries = listData.map((e) => [
     e.name,
     e.capital,
@@ -75,7 +65,6 @@ Future<void> exportToXml() async{
     e.timezones.toString()
   ]);
 
-  //XML Header
   builder.processing('xml', 'version="1.0"');
 
   builder.element('Paises', nest: () {
@@ -102,9 +91,7 @@ Future<void> exportToXml() async{
   });
   
   final countriesXml = builder.build();
-  //print(countriesXml.toString());
 
-  //requestWritePermission
   _permissionController.requestWriteExternalStoragePermission();
 
   final String dir = (await getExternalStorageDirectory()).path;
@@ -114,8 +101,6 @@ Future<void> exportToXml() async{
   final String path = '$dir/countries_list.xml';
 
   final File file = File(path);
-  
-  //Save the XML file on the Device app folder
   await file.writeAsString(countriesXml.toString());
   print("exported");
 

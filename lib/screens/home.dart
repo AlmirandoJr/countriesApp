@@ -9,8 +9,6 @@ import 'package:challenge2ibi/widgets/progress.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-//import 'package:get/get.dart';
-
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -25,7 +23,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    //Permission
   }
 
   @override
@@ -44,7 +41,6 @@ class _HomeScreenState extends State<HomeScreen> {
       body: CustomScrollView(
         slivers: <Widget>[
           header(context, title: "2iBi Software"),
-
           SliverList(
             delegate: SliverChildListDelegate(
               <Widget>[
@@ -90,14 +86,13 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             delegate: SliverChildBuilderDelegate(
               (BuildContext context,int index){
-                return FutureBuilder(
-                  
+                return FutureBuilder(                                   
                   future: _homeController.countryFuture,
-
                   builder: (context, AsyncSnapshot<List<CountryModel>> snapshot){
-                    var c = snapshot.data[index];
+                    
                     if (snapshot.connectionState == ConnectionState.done){
                       if(snapshot.hasData){
+                        var c = snapshot.data[index];
                         return GestureDetector(
                           onTap: (){
                             print("Tapped");
@@ -127,7 +122,6 @@ class _HomeScreenState extends State<HomeScreen> {
                               countryName: c.name ?? "Country",
                               countryRegion: c.region,
                               cover: c.flag.toString(),
-                              //isCover: c.flag.toString().endsWith("null")
                             ),
                           ),
                         );

@@ -27,11 +27,8 @@ Column countryWidget(context,
             placeholderBuilder: (context) => circularProgress(context),
             height: 8,
           ),
-          /*
-          : Image.asset(localCover, fit: BoxFit.cover,),
-          */
+
           decoration: BoxDecoration(          
-            //color: Colors.white70,
             color: Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0),
             shape: BoxShape.rectangle,
             borderRadius: BorderRadius.circular(5)
@@ -59,30 +56,6 @@ Column countryWidget(context,
           ),
         ),
       ),
-      
-      /*
-      Padding(
-        padding: const EdgeInsets.only(
-          top: 4,
-          bottom: 0
-        ),
-        child: Text(
-          // products is out demo list
-          "$countryName",
-          textAlign: TextAlign.center,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontFamily:textFont, fontSize: 16),
-        ),
-      ),
-      Text(
-        "$countryRegion",
-        textAlign: TextAlign.center,
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-        style: TextStyle(fontFamily:textFont, fontSize: 14),
-      ),
-      */
   
     ],
     

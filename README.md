@@ -1,6 +1,6 @@
-﻿# CountriesApp para 2iBi Challenge
+﻿# Countries App
 
-<p>Aplicativo mobile para sistema Android, construido com o framework <a href="https://flutter.dev/" target="_blank"> Flutter</a>. Efectua busca, visualização, exportação/armazenamento local de informações sobre paises, com base na API <a href="https://restcountries.eu/" target="_blank"> REST COUNTRIES</a>.
+<p>Aplicativo móvel para sistema Android, construido com o framework <a href="https://flutter.dev/" target="_blank"> Flutter</a>. Efectua busca, visualização, exportação/armazenamento local de informações sobre paises, com base na API <a href="https://restcountries.eu/" target="_blank"> REST COUNTRIES</a>.
 </p>
 
 ## Apresentação
@@ -23,7 +23,7 @@
 | ------------------- | ------------------- | ------------------- |
 |  <img src="./assets/screenshots/3.jpg" alt="App IMG 3"> |  <img src="./assets/screenshots/4.jpg" alt="App IMG 4"> |   <img src="./assets/screenshots/5.jpg" alt="App IMG 5">		  |
 
-## Download Link
+## Link do aplicativo
 
 <a href="https://drive.google.com/file/d/19YWT_uesYgWJ72lSErkbxPlLeINuQMm1/view?usp=sharing" target="_blank"> Baixar Aplicativo (APK) para telemóveis com sistema Android</a>
 
@@ -34,7 +34,6 @@
 - [x] Exportação de informações dos paises para ficheiro CSV
 - [x] Exportação de informações dos paises para ficheiro XML
 - [x] Armazenamento dos ficheiros na pasta do aplicativo no dispositivo
-- [ ] Exportação de informações dos paises para ficheiro XLS
 
 
 ## Inicialização do projecto
